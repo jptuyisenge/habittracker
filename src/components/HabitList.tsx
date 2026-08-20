@@ -7,12 +7,13 @@ import {
   startOfWeek,
 } from "date-fns";
 
-export function HabitList() {
-  const habits = [
-    { id: 1, name: "Drink Water" },
-    { id: 2, name: "Exercise" },
-  ];
+export type Habit = { id: string; name: string };
 
+type HabitsListProps = {
+  habits: Habit[];
+};
+
+export function HabitList({ habits }: HabitsListProps) {
   if (habits.length == 0) {
     return (
       <p className="text-center text-zinc-500 py-12">
@@ -31,7 +32,7 @@ export function HabitList() {
 }
 
 type habitItemProps = {
-  habitItem: { id: number; name: string };
+  habitItem: Habit;
 };
 
 function HabitItem({ habitItem }: habitItemProps) {
